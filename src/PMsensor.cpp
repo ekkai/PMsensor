@@ -22,7 +22,7 @@ int PMsensor::read(float* pdata, bool isfilter) {
   delayMicroseconds(9680);
 
   val = (0.143 * (rawData * 0.0049) - 0.02) * 1000;
-  if(val < 0) {
+  if(val < -10) {
 	  int ret = PMsensorErrDataLow;
 	  return ret;
   }
@@ -49,7 +49,7 @@ int PMsensor::read(float* pdata, bool isfilter, float sensitivity) {
   val = (0.143 * (rawData * 0.0049) - 0.02) * 1000;
   float filteredVal = (prevVal * (1 - _sensitivity)) + (val * _sensitivity);
   prevVal = filteredVal;
-    if(filteredVal < 0) {
+    if(filteredVal < -10) {
 	  int ret = PMsensorErrDataLow;
 	  return ret;
   }
