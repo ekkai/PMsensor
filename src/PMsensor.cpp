@@ -35,7 +35,7 @@ int PMsensor::read(float* pdata, bool isfilter) {
 
 
 int PMsensor::read(float* pdata, bool isfilter, float sensitivity) {
-	int ret = PMsensorErrSuccess ;
+  int ret = PMsensorErrSuccess ;
   _sensitivity = sensitivity;
   digitalWrite(_LEDpin, LOW);
   delayMicroseconds(280);
