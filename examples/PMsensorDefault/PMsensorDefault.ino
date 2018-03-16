@@ -18,7 +18,7 @@ void loop() {
   if ((err = PM.read(&data, true, 0.1)) != PMsensorErrSuccess) {
     Serial.print("data Error = ");
     Serial.println(err);
-	delay(3000);
+    delay(3000);
     return;
   }
   
