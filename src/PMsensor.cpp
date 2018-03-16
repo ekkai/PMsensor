@@ -49,6 +49,7 @@ int PMsensor::read(float* pdata, bool isfilter, float sensitivity) {
   val = (0.143 * (rawData * 0.0049)-0.03) * 1000;
   float filteredVal = (prevVal * (1 - _sensitivity)) + (val * _sensitivity);
   prevVal = filteredVal;
+
   val = filteredVal;
   if (val < 100) {
     val = val / 4;
@@ -66,7 +67,7 @@ int PMsensor::read(float* pdata, bool isfilter, float sensitivity) {
     val = (val / 4) * 1.15 * 1.3 * 1.45 * 1.6;
   }
   
-    if(filteredVal < -10) {
+  if(filteredVal < -10) {
 	  int ret = PMsensorErrDataLow;
 	  return ret;
   }
