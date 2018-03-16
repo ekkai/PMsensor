@@ -21,7 +21,7 @@ int PMsensor::read(float* pdata, bool isfilter) {
   digitalWrite(_LEDpin, HIGH);
   delayMicroseconds(9680);
 
-  val = (0.143 * (rawData * 0.0049) - 0.02) * 1000;
+  val = (0.143 * (rawData * 0.0049) - 0.03) * 1000;
   if(val < -10) {
 	  int ret = PMsensorErrDataLow;
 	  return ret;
