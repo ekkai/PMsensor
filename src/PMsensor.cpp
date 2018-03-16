@@ -22,7 +22,7 @@ int PMsensor::read(float* pdata, bool isfilter) {
   delayMicroseconds(9680);
 
   val = (0.143 * (rawData * 0.0049) - 0.02) * 1000;
-  if(val < 0) {
+  if(val < -10) {
 	  int ret = PMsensorErrDataLow;
 	  return ret;
   }
@@ -46,15 +46,32 @@ int PMsensor::read(float* pdata, bool isfilter, float sensitivity) {
   digitalWrite(_LEDpin, HIGH);
   delayMicroseconds(9680);
 
-  val = (0.143 * (rawData * 0.0049) - 0.02) * 1000;
+  val = (0.143 * (rawData * 0.0049)-0.03) * 1000;
   float filteredVal = (prevVal * (1 - _sensitivity)) + (val * _sensitivity);
   prevVal = filteredVal;
-    if(filteredVal < 0) {
+  val = filteredVal;
+  if (val < 100) {
+    val = val / 4;
+  }
+  else if (val > 100 && val < 200) {
+    val = (val / 4) * 1.15;
+  }
+  else if (val > 200 && val < 300) {
+    val = (val / 4) * 1.15 * 1.3;
+  }
+  else if (val > 300 && val < 400) {
+    val = (val / 4) * 1.15 * 1.3 * 1.45;
+  }
+  else if (val > 400 && val < 500) {
+    val = (val / 4) * 1.15 * 1.3 * 1.45 * 1.6;
+  }
+  
+    if(filteredVal < -10) {
 	  int ret = PMsensorErrDataLow;
 	  return ret;
   }
   else {
-	  *pdata = filteredVal;
+	  *pdata = val;
   }
 
 
