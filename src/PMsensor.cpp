@@ -11,7 +11,7 @@ void PMsensor::init(int LEDpin, int sensorPin) {
 
 
 int PMsensor::read(float* pdata, bool isfilter) {
-	int ret = PMsensorErrSuccess ;
+  int ret = PMsensorErrSuccess ;
   digitalWrite(_LEDpin, LOW);
   delayMicroseconds(280);
 
