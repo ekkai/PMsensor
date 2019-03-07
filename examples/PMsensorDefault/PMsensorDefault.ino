@@ -14,12 +14,12 @@ void loop() {
   Serial.println("Read PM2.5");
 
   float filter_Data = PM.read(0.1);
-  float noFilter_Data = PM.read();
+  //float noFilter_Data = PM.read();
 
   Serial.print("Filter : ");
   Serial.println(filter_Data);
-  Serial.print("noFilter : ");
-  Serial.println(noFilter_Data);
+  //Serial.print("noFilter : ");
+  //Serial.println(noFilter_Data);
 
   
   delay(1000);
