@@ -8,8 +8,8 @@ class PMsensor {
   public:
     PMsensor();
 	void init(int LEDpin, int sensorPin);
-    int read(float* pdata, bool isfilter);
-    int read(float* pdata, bool isfilter, float sensitivity);
+    float read(float sensitivity);
+    float read();
     float rawData;
     float val;
     float prevVal;
