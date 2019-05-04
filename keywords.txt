@@ -6,7 +6,7 @@
 # Library (KEYWORD1)
 #######################################
 
-PMsensor	KEYWORD1	PMsensor
+PMsensor	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
